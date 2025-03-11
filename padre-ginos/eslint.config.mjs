@@ -20,9 +20,9 @@ export default [
     languageOptions: {
       globals: { ...globals.browser, ...globals.node },
       parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
+        ecmaVersion: "latest",
+        ecmaFeatures: { jsx: true },
+        sourceType: "module",
       },
     },
     rules: {
