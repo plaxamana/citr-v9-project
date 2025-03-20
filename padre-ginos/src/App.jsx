@@ -1,16 +1,18 @@
 import { createRoot } from "react-dom/client";
-import Order from "./Order";
-import PizzaOfTheDay from "./PizzaOfTheDay";
+import { RouterProvider, createRouter } from "@tanstack/react-router";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { routeTree } from "./routeTree.gen";
 
-const App = () => {
+const router = createRouter({ routeTree });
+const queryClient = new QueryClient();
+
+function App() {
   return (
-    <div>
-      <h1 className="logo">Padre Gino's Pizza</h1>
-      <Order />
-      <PizzaOfTheDay />
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />;
+    </QueryClientProvider>
   );
-};
+}
 
 const container = document.getElementById("root");
 const root = createRoot(container);
